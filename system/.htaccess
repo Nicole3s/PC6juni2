@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|img|js|css|robots\.txt)
+RewriteRule ^(.*)$ /~5639050/Herkansingwebsite/index.php/$1 [L]
+
+
+
