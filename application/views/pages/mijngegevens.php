@@ -20,11 +20,11 @@ $query2 = $this->db->select('CocaCola, Google')->from('Merkvoorkeur')
 foreach ($query->result() as $row)
 {
     if ($row->geslacht == 'm') {
-        echo '<a href= ><div class="foto"> <img src="../../../assets/img/man.jpg"id="foto" ></div></a>';
+        echo '<div class="foto"> <img src="../../../assets/img/man.jpg"id="foto" ></div>';
     }
     else{
 
-        echo '<a href= > <div class="foto" > <img src="../../../assets/img/vrouw.jpg" id="foto"></div></a>';
+        echo '<div class="foto" > <img src="../../../assets/img/vrouw.jpg" id="foto"></div>';
     }
 
     echo "Naam: ". $row->nickname ."<br>";
