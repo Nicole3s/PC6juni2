@@ -13,11 +13,17 @@
 
     <p>
         <label for="voornaam">Voornaam</label>
-        <input type="text" name="voornaam" value="">
+        <input type="text" name="voornaam" value="<?php echo set_value('voornaam'); ?>" size="50" >
+    </p>
+
+    <p>
         <label for="tussenvoegsel">Tussenvoegsel</label>
-        <input type="text" name="tussenvoegsel" value="">
+        <input type="text" name="tussenvoegsel" value="<?php echo set_value('tussenvoegsel'); ?>" size="50" >
+    </p>
+
+    <p>
         <label for="achternaam">Achternaam</label>
-        <input type="text" name="achternaam" value="">
+        <input type="text" name="achternaam" value="<?php echo set_value('achternaam'); ?>" size="50" >
     </p>
 
     <p>
@@ -49,8 +55,9 @@
     </p>
 
     <p>
-    <h5>Beschrijving</h5>
-    <textarea id="beschrijving" name="beschrijving" value="<?php echo set_value('beschrijving'); ?>" size="50"></textarea>
+    <h5>Verdere info</h5>
+    <label for="beschrijving">Beschrijving</label>
+    <textarea id="beschrijving" name="beschrijving"> <?php echo set_value('beschrijving'); ?>" size="50"></textarea>
     </p>
 
     <p>
@@ -75,8 +82,8 @@
     </p>
 
     <label>Ik heb een voorkeur voor deze merken</label>
-    <div class="form_list">
-        <input id="brand_CocaCola" type="checkbox" name="brands[]" value="<?php echo set_value('CocaCola');?>"><label for="brand_CocaCola">CocaCola</label><br>
+    <div id="check_list">
+        <input id="brand_CocaCola" type="checkbox" name="brands[]" value="CocaCola" <?php if(isset($_POST['brands[]'])) echo "checked='checked'"; ?>></label for="brand_CocaCola">CocaCola</label><br>
         <input id="brand_Pepsi" type="checkbox" name="brands[]" value="Pepsi"><label for="brand_Pepsi">Pepsi</label><br>
         <input id="brand_Google" type="checkbox" name="brands[]" value="Google"><label for="brand_Google">Google</label><br>
         <input id="brand_Disney" type="checkbox" name="brands[]" value="Disney"><label for="brand_Disney">Disney</label><br>
