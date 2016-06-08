@@ -20,18 +20,18 @@ $query2 = $this->db->select('CocaCola, Google')->from('Merkvoorkeur')
 foreach ($query->result() as $row)
 {
     if ($row->geslacht == 'm') {
-        echo '<a href= ><div class="foto"> <img src="../../assets/img/man.jpg"id="foto" ></div></a>';
+        echo '<a href= ><div class="foto"> <img src="../../../assets/img/man.jpg"id="foto" ></div></a>';
     }
     else{
 
-        echo '<a href= > <div class="foto" > <img src="../../assets/img/vrouw.jpg" id="foto"></div></a>';
+        echo '<a href= > <div class="foto" > <img src="../../../assets/img/vrouw.jpg" id="foto"></div></a>';
     }
 
     echo "Naam: ". $row->nickname ."<br>";
     echo "Leeftijd: ".$row->leeftijd."<br>";
     echo "Geslacht: ".$row->geslacht . "<br>";
     echo "Type: ".$row->persoonlijkheidstype . "<br>";
-    echo "Beschrijving: ".$row->beschrijving . "...<br>";
+    echo "Beschrijving: ".$row->beschrijving . "<br>";
     echo 'Merkvoorkeuren: ' . "<br>";
     foreach ($query2->result() as $row2) {
         if($row2-> CocaCola == 1){
