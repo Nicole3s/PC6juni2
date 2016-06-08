@@ -121,11 +121,7 @@ nav li a:hover {
 }
 
 
-#foto img{
 
-    width: 100%;
-
-}
 
 a{
     text-decoration: none;
@@ -145,4 +141,14 @@ a{
     font-weight: bolder;
     color: black;
     margin-left: 1%;
+}
+
+#foto{
+    width:25%;
+
+}
+
+.foto{
+    border-color: black;
+    border-width: medium;
 }

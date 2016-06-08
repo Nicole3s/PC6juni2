@@ -3,8 +3,7 @@
 
 
 
-$max = $this->db->count_all_results('Persoon');
-$id = rand (1, $max);
+$id = $this->uri->segment(3,0);
 $query = $this->db->select('nickname, leeftijd, geslacht, beschrijving, persoonlijkheidstype')->from('Persoon')
 
     ->group_start()
@@ -21,18 +20,18 @@ $query2 = $this->db->select('CocaCola, Google')->from('Merkvoorkeur')
 foreach ($query->result() as $row)
 {
     if ($row->geslacht == 'm') {
-        echo '<a href= ><div class="thumbnail"> <img src="assets/img/man.jpg" id="thumbnail"></div></a>';
+        echo '<a href= ><div class="foto"> <img src="../../assets/img/man.jpg"id="foto" ></div></a>';
     }
     else{
 
-        echo '<a href= > <div class="thumbnail"> <img src="assets/img/vrouw.jpg" id="thumbnail"></div></a>';
+        echo '<a href= > <div class="foto" > <img src="../../assets/img/vrouw.jpg" id="foto"></div></a>';
     }
 
     echo "Naam: ". $row->nickname ."<br>";
     echo "Leeftijd: ".$row->leeftijd."<br>";
     echo "Geslacht: ".$row->geslacht . "<br>";
     echo "Type: ".$row->persoonlijkheidstype . "<br>";
-    echo substr($row->beschrijving, 0,50) . "...<br>";
+    echo "Beschrijving: ".$row->beschrijving . "...<br>";
     echo 'Merkvoorkeuren: ' . "<br>";
     foreach ($query2->result() as $row2) {
         if($row2-> CocaCola == 1){

@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['pages/(:any)'] = 'pages/index/$1';
+$route['pages/mijngegevens/(:num)']= 'pages/index/mijngegevens/$1';
 
 $route['mijnprofiel/(:any)'] = 'mijnprofiel/index/$1';
 $route['registreer/(:any)'] = 'registreer/index/$1';
