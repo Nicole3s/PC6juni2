@@ -23,8 +23,8 @@ class Registreer extends CI_Controller
                 'rules' => 'trim|required|min_length[3]|max_length[12]|is_unique[Persoon.nickname]',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
-                    'min_length' => 'Uw %s moet langer zijn dan 3 karakters.',
-                    'max_length' => 'Uw %s moet korter zijn dan 12 karakters.',
+                    'min_length' => 'Uw %s moet minstens 3 karakters zijn.',
+                    'max_length' => 'Uw %s mag maximaal 12 karakters bevatten.',
                     'is_unique' => 'Dit %s bestaat al.'
                 ),
             ),
@@ -34,8 +34,8 @@ class Registreer extends CI_Controller
                 'rules' => 'trim|required|min_length[2]|max_length[16]',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
-                    'min_length' => 'Uw %s moet langer zijn dan 2 karakters.',
-                    'max_length' => 'Uw %s moet korter zijn dan 16 karakters.',
+                    'min_length' => 'Uw %s moet minstens 2 karakters zijn.',
+                    'max_length' => 'Uw %s mag maximaal 16 karakters bevatten.',
                 ),
             ),
             array(
@@ -44,8 +44,8 @@ class Registreer extends CI_Controller
                 'rules' => 'trim|required|min_length[2]|max_length[12]',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
-                    'min_length' => 'Uw %s moet langer zijn dan 2 karakters.',
-                    'max_length' => 'Uw %s moet korter zijn dan 12 karakters.',
+                    'min_length' => 'Uw %s moet minstens 2 karakters zijn.',
+                    'max_length' => 'Uw %s mag maximaal 12 karakters bevatten.',
                 ),
             ),
             array(
@@ -54,15 +54,17 @@ class Registreer extends CI_Controller
                 'rules' => 'trim|required|min_length[2]|max_length[16]',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
-                    'min_length' => 'Uw %s moet langer zijn dan 2 karakters.',
-                    'max_length' => 'Uw %s moet korter zijn dan 16 karakters.',
+                    'min_length' => 'Uw %s moet minstens 2 karakters zijn.',
+                    'max_length' => 'Uw %s mag maximaal 16 karakters bevatten.',
                 ),
             ),
             array(
                 'field' => 'password',
                 'label' => 'Wachtwoord',
-                'rules' => 'trim|required',
+                'rules' => 'trim|min_length[3]|max_length[16]|required',
                 'errors' => array(
+                    'min_length' => 'Uw %s moet minstens 3 karakters zijn.',
+                    'max_length' => 'Uw %s mag maximaal 16 karakters bevatten.',
                     'required' => 'U moet een %s invullen.',
                 ),
             ),
