@@ -8,6 +8,17 @@ class Registreer extends CI_Controller
         parent::__construct();
     }
 
+    function leeftijd($gbdatum)
+    {
+        $gbdatum=explode("-",$gbdatum);
+        $tempm = date("m");
+        $tempd = date("j");
+        $tempj = date("Y");
+        $leeftijd = $tempj - $gbdatum[0];
+        if($tempm<$gbdatum[1] || ($tempm==$gbdatum[1] && $tempd<$gbdatum[2]))
+            $leeftijd--;
+        return ($leeftijd>=18);
+    }
 
     public function index($page='registreer')
     {
@@ -15,6 +26,7 @@ class Registreer extends CI_Controller
         $this->load->library('form_validation');
         // Laad de database:
         $this->load->model('page_model');
+
 
         $configuratie = array(
             array(
@@ -25,7 +37,7 @@ class Registreer extends CI_Controller
                     'required' => 'U moet een %s invullen.',
                     'min_length' => 'Uw %s moet minstens 3 karakters zijn.',
                     'max_length' => 'Uw %s mag maximaal 12 karakters bevatten.',
-                    'is_unique' => 'Dit %s bestaat al.'
+                    'is_unique' => 'Deze %s bestaat al.'
                 ),
             ),
             array(
@@ -90,10 +102,11 @@ class Registreer extends CI_Controller
             array(
                 'field' => 'geboortedatum',
                 'label' => 'Geboortedatum (JJJJ-MM-DD)',
-                'rules' => 'trim|required|is_unique[Persoon.email]',
+                'rules' => 'trim|required|is_unique[Persoon.email]|callback_leeftijd',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
                     'is_unique' => 'De %s moet uniek zijn.',
+                    'leeftijd' => 'U moet ouder dan 18 zijn.'
                 ),
             ),
             array(
@@ -133,14 +146,14 @@ class Registreer extends CI_Controller
         {
             if ($this->form_validation->run() == FALSE)
             {
-                $this->load->view('templates/regheader');
+                $this->load->view('templates/header');
                 $this->load->view('registreer/'.$page);
                 $this->load->view('templates/footer');
             }
             else
             {
                 $this->load->view('templates/header');
-                $this->load->view('registreer/registreergelukt');
+                $this->load->view('registreer/test');
                 $this->load->view('templates/footer');
             }
         }

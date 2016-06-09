@@ -55,6 +55,7 @@ $route['pages/mijngegevens/(:num)']= 'pages/index/mijngegevens/$1';
 
 $route['mijnprofiel/(:any)'] = 'mijnprofiel/index/$1';
 $route['registreer/(:any)'] = 'registreer/index/$1';
+$route['registreertest/(:any)'] = 'registreertest/index/$1';
 //
 //$route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'pages';

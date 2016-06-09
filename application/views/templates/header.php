@@ -14,7 +14,7 @@
                 <li><?php echo anchor('/registreer/registreer/', 'Likes') ?></li>
                 <li><?php echo anchor('/registreer/registreer/', 'Geliked') ?></li>
                 <li><?php echo anchor('/registreer/registreer/', 'Matches') ?></li>
-                <li><?php echo anchor('/registreer/test/', 'Test') ?></li>
+                <li><?php echo anchor('/registreertest/test/', 'Test') ?></li>
                 <li><?php echo anchor('/registreer/registreer/', 'Registeer') ?></li>
                 <li><?php echo anchor('/mijnprofiel/inlog/', 'Login') ?> </li>
 
