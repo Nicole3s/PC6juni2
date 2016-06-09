@@ -4,7 +4,7 @@
 
 
 $id = $this->uri->segment(3,0);
-$query = $this->db->select('nickname, leeftijd, geslacht, beschrijving, persoonlijkheidstype')->from('Persoon')
+$query = $this->db->select('nickname, leeftijd, geslacht, beschrijving, tI,tN, tT, tJ')->from('Persoon')
 
     ->group_start()
     ->where('id', $id )
@@ -27,10 +27,36 @@ foreach ($query->result() as $row)
         echo '<div class="foto" > <img src="../../../assets/img/vrouw.jpg" id="foto"></div>';
     }
 
+    if($row->tI > 50){
+        $IE = 'I';
+    }
+    else{
+        $IE = 'E';
+    }
+
+    if($row->tN > 50){
+        $NS = 'N';
+    }
+    else{
+        $NS = 'S';
+    }
+    if($row->tT > 50){
+        $TF = 'T';
+    }
+    else{
+        $TF = 'F';
+    }
+    if($row->tJ > 50){
+        $JP = 'J';
+    }
+    else{
+        $JP = 'P';
+    }
+
     echo "Naam: ". $row->nickname ."<br>";
     echo "Leeftijd: ".$row->leeftijd."<br>";
     echo "Geslacht: ".$row->geslacht . "<br>";
-    echo "Type: ".$row->persoonlijkheidstype . "<br>";
+    echo "Type: ".$IE.$NS.$TF.$JP. "<br>";
     echo "Beschrijving: ".$row->beschrijving . "<br>";
     echo 'Merkvoorkeuren: ' . "<br>";
     foreach ($query2->result() as $row2) {
