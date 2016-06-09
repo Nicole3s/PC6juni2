@@ -293,6 +293,10 @@ class Registreer extends CI_Controller
             ),
         );
 
+
+        echo var_dump($this->db);
+
+
         $this->form_validation->set_rules($configuratie);
 
         if ( ! file_exists(APPPATH.'views/registreer/'.$page.'.php'))
@@ -425,7 +429,7 @@ class Registreer extends CI_Controller
                 $persoondata = array(
                     'nickname' => $this->input->post('nickname'),
                     'naam' => $this->input->post('voornaam').$tv.$this->input->post('achternaam'),
-                    'wachtwoord' => $this->input->post('password'),
+                    'wachtwoord' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                     'email' => $this->input->post('email'),
                     'geboortedatum' => $this->input->post('geboortedatum'),
                     'geslacht' => $this->input->post('geslacht'),

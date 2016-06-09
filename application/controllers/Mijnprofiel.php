@@ -8,6 +8,16 @@ class Mijnprofiel extends CI_Controller
         parent::__construct();
     }
 
+    function wachtwoord($ww)
+    {
+        $hash = $this->db
+            ->select('wachtwoord')
+            ->from('Persoon')
+            ->where('nickname', $this->input->post('nickname'))
+            ->get()->row_array()['wachtwoord'];
+        return (password_verify($ww, $hash));
+    }
+
     public function index($page='mijnprofiel')
     {
         $this->load->helper('form','url','security');
@@ -17,25 +27,26 @@ class Mijnprofiel extends CI_Controller
 
 
 
+
+
            // $data['dataSet']= $this->page_model->getTestData();
 
         $configuratie = array(
             array(
                 'field' => 'nickname',
                 'label' => 'Nickname',
-                'rules' => 'trim|required|matches[Persoon.nickname]',
+                'rules' => 'trim|required',
                 'errors' => array(
                     'required' => 'U moet een %s invullen.',
-                    'matches' => 'Uw %s is niet correct.'
                 ),
             ),
             array(
                 'field' => 'password',
                 'label' => 'Wachtwoord',
-                'rules' => 'trim|required|matches[Persoon.password]',
+                'rules' => 'trim|required|callback_wachtwoord',
                 'errors' => array(
+                    'wachtwoord' => 'Verkeerd wachtwoord en/of nickname.',
                     'required' => 'U moet een %s invullen.',
-                    'matches' => 'Uw %s is niet correct.'
                 ),
             ),
         );
@@ -56,8 +67,7 @@ class Mijnprofiel extends CI_Controller
         else
         {
             $this->load->view('templates/header');
-            //MOETNOGVERANDERDWORDEN
-            $this->load->view('registreer/registreergelukt');
+            $this->load->view('mijnprofiel/inloggelukt');
             $this->load->view('templates/footer');
         }
     }
