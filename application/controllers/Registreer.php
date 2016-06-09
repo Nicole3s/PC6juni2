@@ -445,10 +445,25 @@ class Registreer extends CI_Controller
                 );
 
                 $this->db->insert('Persoon', $persoondata);
-                $this->db->insert('Merkvoorkeur','brands[]');
+                $id = $this->db
+                    ->select('id')
+                    ->from('Persoon')
+                    ->where('nickname', $this->input->post('nickname'))
+                    ->get()->row_array()['id'];
+                $merken = $this->input->post('brands');
+                foreach ($merken as $merk)
+                {
+                    $merkdata = array(
+                        'id' => $id,
+                        'merk' => $merk
+                    );
+                    $this->db->insert('Merkvoorkeur',$merkdata);
+                }
+
+
 // Produces: INSERT INTO mytable (title, name, date) VALUES ('My title', 'My name', 'My date')
                 $this->load->view('templates/header');
-                $this->load->view('registreer/test');
+                $this->load->view('registreer/registreergelukt');
                 $this->load->view('templates/footer');
             }
         }
