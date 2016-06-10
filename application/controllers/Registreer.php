@@ -294,8 +294,6 @@ class Registreer extends CI_Controller
         );
 
 
-        echo var_dump($this->db);
-
 
         $this->form_validation->set_rules($configuratie);
 

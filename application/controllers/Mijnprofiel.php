@@ -66,9 +66,16 @@ class Mijnprofiel extends CI_Controller
         }
         else
         {
-            $this->load->view('templates/header');
-            $this->load->view('mijnprofiel/inloggelukt');
-            $this->load->view('templates/footer');
+            $data = array(
+                'nickname' => $this->input->post('nickname'),
+                'ingelogd' => TRUE
+            );
+
+            $this->session->set_userdata($data);
+
+            $this->load->view('templates/inlogheader');
+            $this->load->view('inloggelukt/inloggelukt');
+            $this->load->view('templates/inlogfooter');
         }
     }
 

@@ -10,6 +10,6 @@
 <input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
 
 <div><input type="submit" value="Login" /></div>
-
 </form>
+<?php echo form_close(); ?>
 
