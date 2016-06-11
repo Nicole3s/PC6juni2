@@ -11,9 +11,6 @@
             <ul>
 
                 <li><a href = "<?php echo base_url(''); ?>"> Home</a></li>
-                <li><?php echo anchor('/registreer/registreer/', 'Likes') ?></li>
-                <li><?php echo anchor('/registreer/registreer/', 'Geliked') ?></li>
-                <li><?php echo anchor('/registreer/registreer/', 'Matches') ?></li>
                 <li><?php echo anchor('/registreer/registreer/', 'Registeer') ?></li>
                 <li><?php echo anchor('/mijnprofiel/inlog/', 'Login') ?> </li>
 

@@ -8,6 +8,12 @@ class Mijnprofiel extends CI_Controller
         parent::__construct();
     }
 
+    function logout()
+    {
+        $this->session->sess_destroy();
+        redirect();
+    }
+
     function wachtwoord($ww)
     {
         $hash = $this->db
@@ -18,7 +24,7 @@ class Mijnprofiel extends CI_Controller
         return (password_verify($ww, $hash));
     }
 
-    public function index($page='mijnprofiel')
+    public function index($page='mijnprofiel', $fout='ingelogd')
     {
         $this->load->helper('form','url','security');
         $this->load->library('form_validation');
@@ -60,6 +66,12 @@ class Mijnprofiel extends CI_Controller
         }
         else if ($this->form_validation->run() == FALSE)
         {
+            if ($fout=='anoniem')
+            {
+                echo '<script language="javascript">';
+                echo 'alert("U dient ingelogd te zijn om deze pagina te bezoeken")';
+                echo '</script>';
+            }
             $this->load->view('templates/header');
             $this->load->view('mijnprofiel/'.$page);
             $this->load->view('templates/footer');
@@ -73,7 +85,7 @@ class Mijnprofiel extends CI_Controller
 
             $this->session->set_userdata($data);
 
-            redirect('inloggelukt');
+            redirect();
         }
     }
 

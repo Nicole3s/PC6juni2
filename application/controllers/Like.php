@@ -1,7 +1,7 @@
 <?php
 
 
-class Inloggelukt extends CI_Controller
+class Like extends CI_Controller
 {
     public function __construct()
     {
@@ -9,10 +9,16 @@ class Inloggelukt extends CI_Controller
         $this->ingelogd();
     }
 
-    public function index($page='inloggelukt')
+    public function index($page='like')
     {
-
-        if ( ! file_exists(APPPATH.'views/inloggelukt/'.$page.'.php'))
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!//VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!//VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        $page='like';
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        if ( ! file_exists(APPPATH.'views/like/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!
             show_404();
@@ -20,7 +26,7 @@ class Inloggelukt extends CI_Controller
         else
         {
             $this->load->view('templates/inlogheader');
-            $this->load->view('inloggelukt/'.$page);
+            $this->load->view('like/'.$page);
             $this->load->view('templates/inlogfooter');
         }
     }

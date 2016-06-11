@@ -15,18 +15,22 @@ class Pages extends CI_Controller
             show_404();
         }
         {
-
             $this->load->helper('url');
             $this->load->model('page_model');
             $data['title'] = ucfirst($page);
-            // $data['dataSet']= $this->page_model->getData();
-            // $data['dataSetMore']= $this->page_model->getMoreData();
-            // $dataSet = $this->page_model->getData();
-            //  $dataSetMore = $this->page_model->getMoreData();
-            $this->load->view('templates/header', $data);
-            $this->load->view('pages/' . $page, $data);
-            $this->load->view('templates/footer', $data);
-
+            $ingelogd = $this->session->userdata('ingelogd');
+            if($ingelogd == TRUE || isset($ingelogd))
+            {
+                $this->load->view('templates/inlogheader', $data);
+                $this->load->view('pages/' . $page, $data);
+                $this->load->view('templates/inlogfooter', $data);
+            }
+            else
+            {
+                $this->load->view('templates/header', $data);
+                $this->load->view('pages/' . $page, $data);
+                $this->load->view('templates/footer', $data);
+            }
         }
     }
 
