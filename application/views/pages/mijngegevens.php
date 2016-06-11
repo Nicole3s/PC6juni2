@@ -4,84 +4,75 @@
 
 
 $id = $this->uri->segment(3,0);
-$query = $this->db->select('nickname, leeftijd, geslacht, beschrijving, tI,tN, tT, tJ')->from('Persoon')
+$query = $this->db->select('nickname, naam, geboortedatum, geslacht, beschrijving, tI,tN, tT, tJ')->from('Persoon')
 
     ->group_start()
     ->where('id', $id )
     ->group_end()
     ->get();
 
-$query2 = $this->db->select('CocaCola, Google')->from('Merkvoorkeur')
+$query2 = $this->db->select('merk')->from('Merkvoorkeur')
     ->group_start()
     ->where('id', $id )
     ->group_end()
     ->get();
 
-foreach ($query->result() as $row)
-{
+foreach ($query->result() as $row) {
     if ($row->geslacht == 'm') {
         echo '<div class="foto"> <img src="../../../assets/img/man.jpg"id="foto" ></div>';
-    }
-    else{
+    } else {
 
         echo '<div class="foto" > <img src="../../../assets/img/vrouw.jpg" id="foto"></div>';
     }
 
-    if($row->tI > 50){
+    if ($row->tI > 50) {
         $IE = 'I';
-    }
-    else{
+    } else {
         $IE = 'E';
     }
 
-    if($row->tN > 50){
+    if ($row->tN > 50) {
         $NS = 'N';
-    }
-    else{
+    } else {
         $NS = 'S';
     }
-    if($row->tT > 50){
+    if ($row->tT > 50) {
         $TF = 'T';
-    }
-    else{
+    } else {
         $TF = 'F';
     }
-    if($row->tJ > 50){
+    if ($row->tJ > 50) {
         $JP = 'J';
-    }
-    else{
+    } else {
         $JP = 'P';
     }
 
-    echo "Naam: ". $row->nickname ."<br>";
-    echo "Leeftijd: ".$row->leeftijd."<br>";
-    echo "Geslacht: ".$row->geslacht . "<br>";
-    echo "Type: ".$IE.$NS.$TF.$JP. "<br>";
-    echo "Beschrijving: ".$row->beschrijving . "<br>";
-    echo 'Merkvoorkeuren: ' . "<br>";
-    foreach ($query2->result() as $row2) {
-        if($row2-> CocaCola == 1){
-            echo 'Coca-Cola' . "<br>";
-        }
-        else{
-            echo null;
-        }
+    $gbdatum = $row->geboortedatum;
+    $gbdatum = explode("-", $gbdatum);
+    $tempm = date("m");
+    $tempd = date("j");
+    $tempj = date("Y");
+    $leeftijd = $tempj - $gbdatum[0];
 
 
-    }
-    foreach ($query2->result() as $row2) {
-        if($row2-> Google == 1){
-            echo 'Google'. "<br>";
-        }
-        else{
-            echo null;
-        }
-
+    echo "Naam: " . $row->naam . "<br>";
+    echo "Leeftijd: " . $leeftijd . "<br>";
+    echo "Geslacht: " . $row->geslacht . "<br>";
+    echo "Type: " . $IE . $NS . $TF . $JP . "<br>";
+    echo "Beschrijving: " . $row->beschrijving . "<br>";
+    echo 'Merkvoorkeuren: ' ;
+}
+    foreach ($query2->result() as $row2)
+    {
+       echo  $row2->merk .', ';
     }
 
+
+    echo  ' '."<br>";
     echo anchor('/mijnprofiel/inlog/', 'Conctact'). "<br>";
     echo anchor('/registreer/registreer/', 'Like'). "<br>";
-}
+
+
 
 ?>
 
