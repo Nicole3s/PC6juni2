@@ -31,8 +31,11 @@ class Inloggelukt extends CI_Controller
 
         if($ingelogd != TRUE || !isset($ingelogd))
         {
-            echo 'U heeft geen permissie voor deze pagina.';
-            die();
+            $msg = urlencode('Your message here');
+            header('Location: inlog.php?msg=$msg');
+            //redirect('mijnprofiel/inlog');
+            //echo 'U moet eerst inloggen zijn om deze pagina te bekijken.';
+            //die();
         }
     }
 }

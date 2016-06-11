@@ -73,9 +73,7 @@ class Mijnprofiel extends CI_Controller
 
             $this->session->set_userdata($data);
 
-            $this->load->view('templates/inlogheader');
-            $this->load->view('inloggelukt/inloggelukt');
-            $this->load->view('templates/inlogfooter');
+            redirect('inloggelukt');
         }
     }
 
