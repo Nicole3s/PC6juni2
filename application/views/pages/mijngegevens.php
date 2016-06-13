@@ -70,7 +70,7 @@ foreach ($query->result() as $row) {
 
     echo  ' '."<br>";
     echo anchor('/mijnprofiel/inlog/', 'Conctact'). "<br>";
-    echo anchor('/registreer/registreer/', 'Like'). "<br>";
+    echo anchor('/like/connect/'.$id, 'Like'). "<br>";
 
 
 
