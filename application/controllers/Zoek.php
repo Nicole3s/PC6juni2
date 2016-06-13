@@ -25,8 +25,8 @@ class Zoek extends CI_Controller
         $TF = $this->input->post('tf');
         $JP = $this->input->post('jp');
 
-        
-        if ( ! file_exists(APPPATH.'views/zoek/'.$page.'.php'))
+
+        if (( ! file_exists(APPPATH.'views/zoek/'.$page.'.php')) xor (! file_exists(APPPATH.'views/zoek/'.$page.'.php')) )
         {
             // Whoops, we don't have a page for that!
             show_404();
@@ -44,7 +44,7 @@ class Zoek extends CI_Controller
         if($ingelogd == TRUE || isset($ingelogd))
         {
             $this->load->view('templates/inlogheader', $data);
-            $this->load->view('zoek/' . $page, $data, $geslacht, $minleeftijd, $maxleeftijd, $sumbit, $IE, $NS, $TF, $JP);
+            $this->load->view('zoekingelogd/' . $page, $data, $geslacht, $minleeftijd, $maxleeftijd, $sumbit, $IE, $NS, $TF, $JP);
             $this->load->view('templates/inlogfooter', $data);
         }
         else
