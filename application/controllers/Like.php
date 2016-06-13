@@ -9,15 +9,23 @@ class Like extends CI_Controller
         $this->ingelogd();
     }
 
-    public function index($page='like')
+    public function index($page='like',$id2='-1')
     {
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!//VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!//VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
-        $page='like';
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
-        //VOOOR TEST HAAL DIT WEG!!!!!!!!!!!!!!
+        if ($page=='connect')
+        {
+            $id = $this->db
+                ->select('id')
+                ->from('Persoon')
+                ->where('nickname', $_SESSION['nickname'])
+                ->get()->row_array()['id'];
+            $like = array(
+                'id' => $id,
+                'gegeven_aan' => $id2
+            );
+
+            $this->db->insert('Likes', $like);
+            redirect('like/geliked');
+        }
         if ( ! file_exists(APPPATH.'views/like/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!

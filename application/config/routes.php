@@ -50,9 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['zoek/(:any)'] = 'zoek/index/$1';
 $route['pages/(:any)'] = 'pages/index/$1';
 $route['pages/mijngegevens/(:num)']= 'pages/index/mijngegevens/$1';
 $route['inloggelukt/(:any)'] = 'inloggelukt/$1';
+$route['like/connect/(:any)'] = 'like/index/connect/$1';
 $route['like/(:any)'] = 'like/index/$1';
 $route['mijngegevens/(:any)']= 'mijngegevens/index/$1';
 $route['mijnprofiel/logout'] = 'mijnprofiel/logout';

@@ -1,4 +1,3 @@
-<h1>Dit is een prachtige like pagina</h1></br>
 <h2>"Hadden we eerder van deze site geweten..."</h2>
 <h2>"Een nieuw begin..."</h2>
 <h2>"Daten is liefde, Data is leven..."</h2>

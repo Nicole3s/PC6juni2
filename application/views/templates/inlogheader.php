@@ -10,10 +10,11 @@
 
             <ul>
                 <li><a href = "<?php echo base_url(''); ?>"> Home</a></li>
-                <li><?php echo anchor('/like/like/', 'Likes') ?></li>
-                <li><?php echo anchor('/like/like/', 'Geliked') ?></li>
-                <li><?php echo anchor('/like/like/', 'Matches') ?></li>
-                <li><?php echo anchor('/mijngegevens/mijngegevens/', 'Mijn Gegevens: '.ucfirst($_SESSION['nickname'])) ?></li>
+                <li><?php echo anchor('/like/likes/', 'Gekregen Likes') ?></li>
+                <li><?php echo anchor('/like/geliked/', 'Geliked') ?></li>
+                <li><?php echo anchor('/like/matches/', 'Matches') ?></li>
+                <li><?php echo anchor('/zoek/zoek/', 'Zoeken') ?></li>
+                <li><?php echo anchor('/mijngegevens/profiel/', 'Mijn Profiel: '.ucfirst($_SESSION['nickname'])) ?></li>
                 <li><?php echo anchor('/mijnprofiel/logout/', 'Uitloggen') ?> </li>
 
             </ul>
